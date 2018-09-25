@@ -74,12 +74,10 @@ public class notes {
     public void checkPlaylist(){
         driver.findElement(By.className("player-queue-button")).click();
         List<WebElement> tracksList1 = driver.findElements(By.xpath("//li[@class='queue-track ec-item'] | //li[@class='queue-track ec-item current-track']"));
-        System.out.println(tracksList1.size());
         driver.findElement(By.className("player-queue-button")).click();
         driver.findElement(By.xpath("//button[@class='playable-queue-all button-queue']")).click();
         driver.findElement(By.className("player-queue-button")).click();
         List<WebElement> tracksList2 = driver.findElements(By.xpath("//li[@class='queue-track ec-item'] | //li[@class='queue-track ec-item current-track']"));
-        System.out.println(tracksList2.size());
         Assert.assertNotSame(tracksList1.size(),tracksList2.size());
     }
     public void clearPlaylist(){
