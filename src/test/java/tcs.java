@@ -5,7 +5,7 @@ public class tcs {
 
     @Test
     public void checkSearch(){
-        notes session = new notes();
+        Notes session = new Notes();
         session.browserInit();
         session.enterBeatport();
         session.closeWelcome();
@@ -20,7 +20,7 @@ public class tcs {
 
     @Test
     public void checkPlayer(){
-        notes session = new notes();
+        Notes session = new Notes();
         session.browserInit();
         session.enterBeatport();
         session.closeWelcome();
