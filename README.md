@@ -3,6 +3,7 @@
 Precodnition:
 	* worksation is working under Ubuntu 16.04 OS or later	
 	* maven is working on your wokrstation (if not, you can simply install it on ubuntu OS using command "sudo apt install mvn" in a command line/console)
+	* jdk is installed
 
 Download -> Import to intelliJ as maven project-> build
 
