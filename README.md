@@ -1,5 +1,8 @@
 # bp
 
+Intro:
+It should work on each OS which has installed java, maven and some IDE. However, I did test it only on Ubuntu OS as mentioned below.
+
 Precodnitions:
 	* workstation is working under Ubuntu 16.04 OS or later
 	* maven is working on your wokrstation (if not, you can simply install it on ubuntu OS using command "sudo apt install mvn" in a command line/console)
