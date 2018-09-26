@@ -6,7 +6,7 @@ public class tcs {
     @Test
     public void checkSearch(){
         Notes session = new Notes();
-        session.browserInit();
+        session.initFox();
         session.enterBeatport();
         session.closeWelcome();
         session.search("guru net");
@@ -19,14 +19,16 @@ public class tcs {
     }
 
     @Test
-    public void checkPlayer(){
+    public void checkPlayer() throws InterruptedException {
         Notes session = new Notes();
-        session.browserInit();
+        session.initFox();
         session.enterBeatport();
         session.closeWelcome();
         session.navigateToSong();
         session.checkPlaylist();
         session.clearPlaylist();
+        session.navigateToSong();
+        session.play();
         session.quit();
     }
 }

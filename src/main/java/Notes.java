@@ -1,12 +1,13 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.interactions.Action;
 
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -18,9 +19,11 @@ import java.util.concurrent.TimeUnit;
 public class Notes {
     private static WebDriver driver;
     private static WebDriverWait wait;
-    public static void browserInit(){
+    public static void initFox(){
         System.setProperty("webdriver.gecko.driver", "drivers/geckodriver");
-        driver = new FirefoxDriver();
+        FirefoxOptions options = new FirefoxOptions();
+        options.addArguments("-private");
+        driver = new FirefoxDriver(options);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
@@ -84,6 +87,14 @@ public class Notes {
         driver.findElement(By.className("player-queue-button")).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.className("queue-top-clear-all"))).click();
         Assert.assertEquals(driver.findElement(By.id("player-container")).getAttribute("class"),"player-container player-section artwork-zoom zero-state");
+    }
+    public static void play() throws InterruptedException {
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@class='play-button play']"))).click();
+        WebElement element1 = driver.findElement(By.xpath("//div[@class='player-scrubbable player-progress-bar']"));
+//        System.out.println(element1.getAttribute("style"));
+        Thread.sleep(1000);
+        WebElement element12 = driver.findElement(By.xpath("//div[@class='player-scrubbable player-progress-bar']"));
+        Assert.assertNotSame(element1.getAttribute("style"),element12.getAttribute("style"));
     }
     public static void quit(){
         driver.close();
